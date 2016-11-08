@@ -551,11 +551,11 @@ footer,
 /* feeds */
 #left .feed_teaser h1, #right .feed_teaser h1,
 #left .feed_teaser h2, #right .feed_teaser h2,
-#left .feed_teaser h3, #right .feed_teaser h3{ font-size: 23px; }
+#left .feed_teaser h3, #right .feed_teaser h3{ font-size: 20px; }
 
 #left .feed_teaser h4, #right .feed_teaser h4,
 #left .feed_teaser h5, #right .feed_teaser h5,
-#left .feed_teaser h6, #right .feed_teaser h6{ font-size: 18px; }
+#left .feed_teaser h6, #right .feed_teaser h6{ font-size: 17px; }
 
 #left .feed_teaser .detail , #right .feed_teaser .summary { font-size: 14px; }
 
