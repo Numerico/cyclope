@@ -8,63 +8,67 @@
 
 <div class="regionview feed detail content-view feed-detail">
 
-  <h1 class="title">{% trans feed.name %}</h1>
+    <h2 class="title">{% trans feed.name %}</h2>
 
-  <!-- herramientas -->
-  {% include 'cyclope/content_tools_block.html' %}
-  
-  {% if CYCLOPE_THEME_TYPE == 'bootstrap' %}
-  <!-- descripcion -->
-  {% if feed.summary %}
-  <h3 class="summary">{{ feed.summary|smart_style }}</h3>
-  {% endif%}
-  <!-- /descripcion -->
+    <!-- herramientas -->
+    {% include 'cyclope/content_tools_block.html' %}
 
-  {% for entry in entries %}
-  <div class="text html-text html-content feed_teaser">
-      <h2><a href="{{ entry.link }}">{{ entry.title }}</a></h2>
-      {% if not view_options.titles_only %}
-        {% if entry.summary_detail.type == 'text/html' %}
-         <div class="summary"> <p>{{ entry.summary_detail.value|safe }}</p></div>
-        {% else %}
-          <div class="summary"> <p>{{ entry.summary_detail.value }}</p></div>
-        {% endif %}
-      {% endif %}
-    <a class="btn btn-primary" href="{{ entry.link }}">{% trans "More" %}</a>
-  </div>
-  {% endfor %}
+    {% if CYCLOPE_THEME_TYPE == 'bootstrap' %}
 
-   {% elif CYCLOPE_THEME_TYPE == 'classic' %}
-    <!-- descripcion -->
-  {% if feed.summary %}
-  <div class="summary">{{ feed.summary|smart_style }}</div>
-  {% endif%}
-  <!-- /descripcion -->
+        <!-- descripcion -->
+        {% if feed.summary %}
+            <p class="summary">{{ feed.summary|smart_style }}</p>
+            <hr/>
+        {% endif%}
+        <!-- /descripcion -->
 
-  {% for entry in entries %}
-  <div class="text html-text html-content">
-      <h2><a href="{{ entry.link }}">{{ entry.title }}</a></h2>
-      {% if not view_options.titles_only %}
-        {% if entry.summary_detail.type == 'text/html' %}
-          {{ entry.summary_detail.value|safe }}
-        {% else %}
-          {{ entry.summary_detail.value }}
-        {% endif %}
-      {% endif %}
-  </div>
-  {% endfor %}
-  
-   {% endif %}
+        {% for entry in entries %}
+        <div class="text html-text html-content feed_teaser">
+            <h3><a href="{{ entry.link }}">{{ entry.title }}</a></h3>
+            {% if not view_options.titles_only %}
+                {% if entry.summary_detail.type == 'text/html' %}
+                    <div class="summary"> <p>{{ entry.summary_detail.value|safe }}</p></div>
+                {% else %}
+                    <div class="summary"> <p>{{ entry.summary_detail.value }}</p></div>
+                {% endif %}
+            {% endif %}
+            <a class="btn btn-primary" href="{{ entry.link }}">{% trans "More" %}</a>
+            <hr/>
+        </div>
+        {% endfor %}
 
-  <div class="meta-content">{% include 'collections/categories_navigation_block.html' %}</div>
+    {% elif CYCLOPE_THEME_TYPE == 'classic' %}
 
-  {% include 'cyclope/related_contents_block.html' %}
+        <!-- descripcion -->
+        {% if feed.summary %}
+        <div class="summary">{{ feed.summary|smart_style }}</div>
+        {% endif%}
+        <!-- /descripcion -->
 
-  <div class="clear"></div>
+        {% for entry in entries %}
+        <div class="text html-text html-content">
+          <h2><a href="{{ entry.link }}">{{ entry.title }}</a></h2>
+          {% if not view_options.titles_only %}
+            {% if entry.summary_detail.type == 'text/html' %}
+              {{ entry.summary_detail.value|safe }}
+            {% else %}
+              {{ entry.summary_detail.value }}
+            {% endif %}
+          {% endif %}
+        </div>
+        {% endfor %}
 
-<!--COMENTARIOS -->
-  {% include 'comments/comments_block.html' %}
+    {% endif %}
 
-</div> <!--termina feed_detail -->
+    <div class="meta-content">{% include 'collections/categories_navigation_block.html' %}</div>
+
+    {% include 'cyclope/related_contents_block.html' %}
+
+    <div class="clear"></div>
+
+    <!--COMENTARIOS -->
+    {% include 'comments/comments_block.html' %}
+
+</div>
 
 {% endblock content%}
